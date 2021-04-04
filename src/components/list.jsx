@@ -36,7 +36,9 @@ function List() {
   }
 
   const toUrl = (url) => {
-    window.open(url, "_blank");
+    if (window) {
+      window.open(url, "_blank");
+    }
   }
 
   const getMoreContent = () => {
