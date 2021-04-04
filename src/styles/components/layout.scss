@@ -1,0 +1,22 @@
+@media(max-width: 768px){
+    header{
+        height: 50px;
+        border-bottom: 1px solid #eee;
+        padding: 0px 15px 0px 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .avatar{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: #eee;
+        }
+        .user{
+
+        }
+    }
+}
+@media(min-width: 768px){
+    
+}
