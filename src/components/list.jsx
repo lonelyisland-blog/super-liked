@@ -3,10 +3,12 @@ import { usePrevious } from '../hooks/hooks'
 import Api from '../assets/api';
 // import YouTube from 'react-youtube';
 import InfiniteScroll from "react-infinite-scroll-component";
-
+import _ from 'lodash'
 import '../styles/components/list.scss'
 function List() {
   const [likeList, setLikeList] = useState([])
+  const [mostSuperLikeList, setMostSuperLikeList] = useState([])
+  const [mostLikeList, setMostLikeList] = useState([])
   const [index, setIndex] = useState(0);
   const [displayList, setDisplayList] = useState([])
   const preIndex = usePrevious(index)
@@ -23,7 +25,7 @@ function List() {
         res.data.list.forEach((item) => {
           temList.push(item)
         })
-        setLikeList(temList.slice(0))
+        setLikeList(_.uniqBy(temList.slice(0), 'url'))
       });
     } else {
       getMoreContent()
@@ -65,7 +67,7 @@ function List() {
     })
   }
   return (
-    <div className="list" >
+    <div className="list animate__animated animate__slideInRight" >
       <InfiniteScroll
         dataLength={displayList.length}
         next={loadMore}

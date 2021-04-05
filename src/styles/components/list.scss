@@ -1,7 +1,7 @@
 @media(max-width: 768px){
     .list{
         width: 100vw;
-        height: 100vh;
+        min-height: 100vh;
         .content-container{
             border-top:1px solid #e6e6e6;
             border-bottom: 1px solid #e6e6e6;
@@ -11,6 +11,7 @@
                 height: 200px;
                 background-size: cover;
                 background-repeat: no-repeat;
+                background-color: #28646e;
             }
             .desc{
                 margin: 5px 15px 5px 15px;

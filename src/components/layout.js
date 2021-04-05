@@ -28,7 +28,7 @@ class Layout extends React.Component {
         <Footer>
           © {new Date().getFullYear()}, Built by
           {` `}
-          <a href="https://www.gatsbyjs.org">LikerCoin Dao</a>
+          <a href="https://www.gatsbyjs.org">LikerCoin DAO</a>
         </Footer>
       </Wrapper>
     )
