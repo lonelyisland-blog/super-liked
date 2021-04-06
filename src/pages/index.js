@@ -42,7 +42,7 @@ function IndexPage(props) {
   return (
     <Layout location={props.location} title={siteTitle}>
       <SEO
-        title="Home"
+        title=""
         keywords={[`superlike`, `likecoin`, `bitcoin`, `ipfs`]}
       />
       {ListSwiter(switcher)}
