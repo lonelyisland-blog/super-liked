@@ -60,24 +60,29 @@ function List() {
       }
       return fn(info)
     })).then((res) => {
-      res.forEach((data) => {
+      res.forEach((data, ddx) => {
         if (data.status === 'fulfilled') {
+          data.value.data.times = temList[ddx].times
           infoList.push(data.value.data)
         }
       })
+      if (infoList.length < 5) {
+        loadMore()
+      }
       setDisplayList(displayList.concat(infoList))
     }).catch((err) => {
       console.log('err', err)
     })
   }
   return (
-    <div className="list latest-super-like-list animate__animated animate__fadeIn" >
+    <div id="LatestSuperLikeList" className="list animate__animated animate__fadeIn" >
       <InfiniteScroll
         dataLength={displayList.length}
         next={loadMore}
         hasMore={true}
-        loader={<h4 className="latest-super-like-list-loading"></h4>}
-        scrollableTarget="latest-super-like-list list-loading animate__animated animate__fadeIn">
+        loader={<h4 className="latest-super-like-list-loading">loading...</h4>}
+        scrollableTarget="LatestSuperLikeList"
+      >
         {
           displayList.map((item, idx) =>
             <div className="content-container" key={idx} onClick={() => {

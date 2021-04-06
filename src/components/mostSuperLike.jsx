@@ -74,8 +74,9 @@ function List() {
             }
             return fn(info)
         })).then((res) => {
-            res.forEach((data) => {
+            res.forEach((data, ddx) => {
                 if (data.status === 'fulfilled') {
+                    data.value.data.times = temList[ddx].times
                     infoList.push(data.value.data)
                 }
             })
@@ -85,13 +86,14 @@ function List() {
         })
     }
     return (
-        <div className="head-line-list animate__animated animate__fadeIn" >
+        <div id="HeadLineList" className="head-line-list animate__animated animate__fadeIn" >
             <InfiniteScroll
                 dataLength={displayList.length}
                 next={loadMore}
                 hasMore={true}
-                loader={<h4 className="head-line-list-loading list-loading animate__animated animate__fadeIn"></h4>}
-                scrollableTarget="head-line-list">
+                loader={<h4 className="head-line-list-loading list-loading animate__animated animate__fadeIn">loading</h4>}
+                scrollableTarget="HeadLineList"
+            >
                 {
                     displayList.map((item, idx) =>
                         <div className="content-container animate__animated animate__fadeIn" key={idx} onClick={() => {
@@ -113,6 +115,8 @@ function List() {
                             <div className="actions">
                                 <div className="user">@{item.user}</div>
                                 <div className="likes">{item.like} Likes</div>
+                                <div className="likes">{item.times} SuperLikes</div>
+
                             </div>
                         </div>
                     )

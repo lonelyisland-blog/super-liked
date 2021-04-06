@@ -74,24 +74,29 @@ function List() {
             }
             return fn(info)
         })).then((res) => {
-            res.forEach((data) => {
+            res.forEach((data, ddx) => {
                 if (data.status === 'fulfilled') {
+                    data.value.data.times = temList[ddx].times
                     infoList.push(data.value.data)
                 }
             })
+            if (infoList.length < 5) {
+                loadMore()
+            }
             setDisplayList(displayList.concat(infoList))
         }).catch((err) => {
             console.log('err', err)
         })
     }
+    console.log(displayList)
     return (
-        <div className="list wait-tobe-like-list animate__animated animate__fadeIn" >
+        <div id="WaitToBeLike" className="list animate__animated animate__fadeIn" >
             <InfiniteScroll
                 dataLength={displayList.length}
                 next={loadMore}
                 hasMore={true}
-                loader={<h4 className="wait-tobe-like-list-loading list-loading animate__animated animate__fadeIn"></h4>}
-                scrollableTarget="list wait-tobe-like-list">
+                loader={<h4 className="wait-tobe-like-list-loading list-loading animate__animated animate__fadeIn">loading</h4>}
+                scrollableTarget="WaitToBeLike">
                 {
                     displayList.map((item, idx) =>
                         <div className="content-container" key={idx} onClick={() => {
@@ -111,6 +116,7 @@ function List() {
                             <div className="actions">
                                 <div className="user">@{item.user}</div>
                                 <div className="likes">{item.like} Likes</div>
+                                <div className="likes">{item.times} SuperLikes</div>
                             </div>
                         </div>
                     )

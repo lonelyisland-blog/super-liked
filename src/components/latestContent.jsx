@@ -63,19 +63,23 @@ function List() {
                     infoList.push(data.value.data)
                 }
             })
+            if (infoList.length < 5) {
+                loadMore()
+            }
             setDisplayList(displayList.concat(infoList))
         }).catch((err) => {
             console.log('err', err)
         })
     }
     return (
-        <div className="list latest-content-list animate__animated animate__fadeIn" >
+        <div id="LatestContentList" className="list animate__animated animate__fadeIn" >
             <InfiniteScroll
                 dataLength={displayList.length}
                 next={loadMore}
                 hasMore={true}
-                loader={<h4 className="latest-content-list-loading"></h4>}
-                scrollableTarget="latest-content-list list-loading animate__animated animate__fadeIn">
+                loader={<h4 className="latest-content-list-loading">loading...</h4>}
+                scrollableTarget="LatestContentList"
+            >
                 {
                     displayList.map((item, idx) =>
                         <div className="content-container" key={idx} onClick={() => {

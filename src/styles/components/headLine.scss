@@ -1,8 +1,9 @@
 @media(max-width: 768px){
     .head-line-list{
         width: 100vw;
-        min-height: 100vh;
+        height: calc(100vh - 80px);
         background-color: #f6ffff;
+        overflow: auto;
 
         .content-container{
             // border-top:1px solid #e6e6e6;

@@ -1,5 +1,14 @@
 @media(max-width: 768px){
+    main{
+        // height: calc(100vh - 80px);
+        // overflow-y: scroll;
+        margin-top: 50px;
+    }
     header{
+        position: fixed;
+        top: 0;
+        z-index: 999;
+        width: 100vw;
         height: 50px;
         border-bottom: 1px solid #eee;
         padding: 0px 20px 0px 20px;

@@ -51,9 +51,11 @@ function IndexPage(props) {
         keywords={[`superlike`, `likecoin`, `bitcoin`, `ipfs`]}
       />
 
-      <div className={switcher === 'LatestSuperLikes' ? 'list-display' : 'list-hide'} ><List /></div>
-      <div className={switcher === 'MostSuperLikes' ? 'list-display' : 'list-hide'}>      <MostSuperLikes />
+      <div className={switcher === 'MostSuperLikes' ? 'list-display' : 'list-hide'}><MostSuperLikes />
       </div>
+      <div className={switcher === 'LatestSuperLikes' ? 'list-display' : 'list-hide'}><List />
+      </div>
+
       <div className={switcher === 'MostLikes' ? 'list-display' : 'list-hide'} >      <MostLikes />
       </div>
 
