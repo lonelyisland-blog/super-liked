@@ -5,6 +5,8 @@ import Api from '../assets/api';
 import InfiniteScroll from "react-infinite-scroll-component";
 import _ from 'lodash'
 import '../styles/components/headLine.scss'
+import initLottie from '../utils/lottie'
+
 function List() {
     const [likeList, setLikeList] = useState([])
     const [mostSuperLikeList, setMostSuperLikeList] = useState([])
@@ -45,6 +47,7 @@ function List() {
         } else {
             getMoreContent()
         }
+        initLottie('.head-line-list-loading')
     }, [config, likeList, index]);
 
 
@@ -87,11 +90,11 @@ function List() {
                 dataLength={displayList.length}
                 next={loadMore}
                 hasMore={true}
-                loader={<h4>Loading...</h4>}
-                scrollableTarget="list">
+                loader={<h4 className="head-line-list-loading list-loading animate__animated animate__fadeIn"></h4>}
+                scrollableTarget="head-line-list">
                 {
                     displayList.map((item, idx) =>
-                        <div className="content-container animate__animated animate__fadeInUpBig" key={idx} onClick={() => {
+                        <div className="content-container animate__animated animate__fadeIn" key={idx} onClick={() => {
                             toUrl(item.url)
                         }}>
                             {/* <YouTube videoId={item.origin.get('v')} opts={opts} /> */}

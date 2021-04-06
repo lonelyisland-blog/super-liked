@@ -37,6 +37,7 @@
     "gatsby-transformer-sharp": "^2.1.18",
     "i18next": "^20.1.0",
     "lodash": "^4.17.21",
+    "lottie-web": "^5.7.8",
     "netlify-cms-app": "^2.9.1",
     "query-string": "^6.13.1",
     "react": "^16.8.6",

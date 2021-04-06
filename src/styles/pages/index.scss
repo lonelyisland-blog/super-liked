@@ -30,6 +30,12 @@ a{
             color: #fff;
         }
     }
+    .list-display{
+        display: block;
+    }
+    .list-hide{
+        display: none;
+    }
 }
 @media(min-width: 768px){
     

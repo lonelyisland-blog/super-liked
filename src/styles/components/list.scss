@@ -48,6 +48,12 @@
                 }
             }
         }
+        .latest-content-list-loading,.latest-super-like-list-loading,.head-line-list-loading,.wait-tobe-like-list-loading{
+            width: 100vw;
+            height: 180px;
+            margin: 0;
+            padding: 0;
+        }
     }
 }
 @media(min-width: 768px){

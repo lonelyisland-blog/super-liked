@@ -9,3 +9,17 @@
     box-shadow: none;
     text-align: center;
 }
+.about{
+    ul{
+        margin: 0;
+        padding: 20px;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        li{
+            margin-left: 20px;
+        }
+        // text-align: c;
+    }
+}

@@ -19,7 +19,10 @@ class Layout extends React.Component {
               <Link to="/"> SuperLiked</Link>
             </div>
             <div className="about animate__animated animate__wobble">
-              <Link to="/about/"> 👏</Link>
+              <Link to="/about/">
+                <span role="img" aria-label="wave emoji">
+                  👋
+          </span></Link>
             </div>
           </header>
           <main>{children}</main>

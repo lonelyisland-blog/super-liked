@@ -16,20 +16,15 @@ import '../styles/pages/index.scss'
 function ListSwiter(key) {
   switch (key) {
     case 'LatestSuperLikes':
-      return <List />;
+      window.location.hash = '#LatestSuperLikes';
     case 'MostSuperLikes':
-      return <MostSuperLikes />;
-      break;
+      window.location.hash = '#MostSuperLikes';
     case 'MostLikes':
-      return <MostLikes />;
-      break;
+      window.location.hash = '#LatestContent';
     case 'WatingToBeLiked':
-      return <WatingToBeLiked />;
-      break;
-
+      window.location.hash = '#WatingToBeLiked';
     default:
-      return <MostSuperLikes />;
-      break;
+      return null;
   }
 }
 function IndexPage(props) {
@@ -45,6 +40,16 @@ function IndexPage(props) {
         title=""
         keywords={[`superlike`, `likecoin`, `bitcoin`, `ipfs`]}
       />
+
+      <div className={switcher === 'LatestSuperLikes' ? 'list-display' : 'list-hide'} ><List /></div>
+      <div className={switcher === 'MostSuperLikes' ? 'list-display' : 'list-hide'}>      <MostSuperLikes />
+      </div>
+      <div className={switcher === 'MostLikes' ? 'list-display' : 'list-hide'} >      <MostLikes />
+      </div>
+
+      <div className={switcher === 'WatingToBeLiked' ? 'list-display' : 'list-hide'}>      <WatingToBeLiked />
+      </div>
+
       {ListSwiter(switcher)}
       <div className="switcher">
         <div onClick={() => switchSwitcher('MostSuperLikes')} className="most-superliked">{t('MOST_SUPER_LIKED')}</div>

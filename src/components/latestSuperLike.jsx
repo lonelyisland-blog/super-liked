@@ -5,6 +5,8 @@ import Api from '../assets/api';
 import InfiniteScroll from "react-infinite-scroll-component";
 import _ from 'lodash'
 import '../styles/components/list.scss'
+import initLottie from '../utils/lottie'
+
 function List() {
   const [likeList, setLikeList] = useState([])
   const [mostSuperLikeList, setMostSuperLikeList] = useState([])
@@ -30,6 +32,8 @@ function List() {
     } else {
       getMoreContent()
     }
+    initLottie('.latest-super-like-list-loading')
+
   }, [config, likeList, index]);
 
 
@@ -67,13 +71,13 @@ function List() {
     })
   }
   return (
-    <div className="list animate__animated animate__fadeIn" >
+    <div className="list latest-super-like-list animate__animated animate__fadeIn" >
       <InfiniteScroll
         dataLength={displayList.length}
         next={loadMore}
         hasMore={true}
-        loader={<h4>Loading...</h4>}
-        scrollableTarget="list">
+        loader={<h4 className="latest-super-like-list-loading"></h4>}
+        scrollableTarget="latest-super-like-list list-loading animate__animated animate__fadeIn">
         {
           displayList.map((item, idx) =>
             <div className="content-container" key={idx} onClick={() => {
