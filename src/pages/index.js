@@ -14,6 +14,7 @@ import WatingToBeLiked from '../components/waitingToBeLike'
 import '../styles/pages/index.scss'
 
 function ListSwiter(key) {
+  if(typeof window !== 'undefined'){
   switch (key) {
     case 'LatestSuperLikes':
       window.location.hash = '#LatestSuperLikes';
@@ -34,6 +35,7 @@ function ListSwiter(key) {
       return null;
       break;
 
+  }
   }
 }
 function IndexPage(props) {
