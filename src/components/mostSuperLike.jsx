@@ -49,7 +49,7 @@ function List() {
 
 
     const loadMore = () => {
-        setIndex(index + 2)
+        setIndex(index + 4)
     }
 
     const toUrl = (url) => {
@@ -59,7 +59,7 @@ function List() {
     }
 
     const getMoreContent = () => {
-        let temList = likeList.slice(index, index + 2)
+        let temList = likeList.slice(index, index + 4)
         let infoList = []
         const fn = (info) => {
             return Api.getSuperLikeInfo(info)
@@ -82,7 +82,7 @@ function List() {
         })
     }
     return (
-        <div className="head-line-list animate__animated animate__slideInRight" >
+        <div className="head-line-list animate__animated animate__fadeInUp" >
             <InfiniteScroll
                 dataLength={displayList.length}
                 next={loadMore}

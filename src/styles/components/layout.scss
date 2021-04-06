@@ -8,12 +8,16 @@
         align-items: center;
         background-color: #fff;
         .avatar{
-            font-family: 'Caveat', cursive;
-            font-size: 23px;
-            color: #28646e;
+            a{
+                font-family: 'Caveat', cursive;
+                font-size: 23px;
+                color: #28646e !important;
+            }
         }
-        .user{
-
+        .about{
+            position: absolute;
+            font-size: 25px;
+            right: 20px;
         }
     }
 }

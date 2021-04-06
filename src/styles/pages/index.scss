@@ -1,6 +1,9 @@
 *{
     font-family: 'Exo', sans-serif;
 }
+a{
+    box-shadow: none;
+}
 @media(max-width: 768px){
     .switcher{
         height: 50px;

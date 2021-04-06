@@ -10,17 +10,16 @@ class Layout extends React.Component {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
-
     return (
       <Wrapper>
         <div
         >
           <header>
             <div className="avatar">
-              SuperLiked
+              <Link to="/"> SuperLiked</Link>
             </div>
-            <div className="user">
-
+            <div className="about animate__animated animate__wobble">
+              <Link to="/about/"> 👏</Link>
             </div>
           </header>
           <main>{children}</main>
