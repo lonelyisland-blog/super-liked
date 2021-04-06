@@ -4,12 +4,16 @@ import translation from './config'
 // the translations
 // (tip move them in a JSON file and import them)
 const resources = translation;
+let lang = 'zh-TW';
+if (typeof window !== 'undefined') {
+    lang = navigator.language
+}
 
 i18n
     .use(initReactI18next) // passes i18n down to react-i18next
     .init({
         resources,
-        lng: "en",
+        lng: lang,
 
         keySeparator: false, // we do not use keys in form messages.welcome
 

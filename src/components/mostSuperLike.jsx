@@ -4,7 +4,7 @@ import Api from '../assets/api';
 // import YouTube from 'react-youtube';
 import InfiniteScroll from "react-infinite-scroll-component";
 import _ from 'lodash'
-import '../styles/components/list.scss'
+import '../styles/components/headLine.scss'
 function List() {
     const [likeList, setLikeList] = useState([])
     const [mostSuperLikeList, setMostSuperLikeList] = useState([])
@@ -49,7 +49,7 @@ function List() {
 
 
     const loadMore = () => {
-        setIndex(index + 5)
+        setIndex(index + 2)
     }
 
     const toUrl = (url) => {
@@ -59,7 +59,7 @@ function List() {
     }
 
     const getMoreContent = () => {
-        let temList = likeList.slice(index, index + 5)
+        let temList = likeList.slice(index, index + 2)
         let infoList = []
         const fn = (info) => {
             return Api.getSuperLikeInfo(info)
@@ -82,7 +82,7 @@ function List() {
         })
     }
     return (
-        <div className="list animate__animated animate__slideInRight" >
+        <div className="head-line-list animate__animated animate__slideInRight" >
             <InfiniteScroll
                 dataLength={displayList.length}
                 next={loadMore}
@@ -91,7 +91,7 @@ function List() {
                 scrollableTarget="list">
                 {
                     displayList.map((item, idx) =>
-                        <div className="content-container" key={idx} onClick={() => {
+                        <div className="content-container animate__animated animate__fadeInUpBig" key={idx} onClick={() => {
                             toUrl(item.url)
                         }}>
                             {/* <YouTube videoId={item.origin.get('v')} opts={opts} /> */}
@@ -101,8 +101,11 @@ function List() {
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat'
                             }}></div> : null}
-                            <div className="desc">
+                            <div className="title">
                                 {item.title}
+                            </div>
+                            <div className="desc">
+                                {item.description}
                             </div>
                             <div className="actions">
                                 <div className="user">@{item.user}</div>

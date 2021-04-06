@@ -10,11 +10,9 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <link
-          type="application/opensearchdescription+xml"
-          rel="search"
-          href="opensearch.xml"
-        />
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Exo:wght@300&display=swap');
+        </style>
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

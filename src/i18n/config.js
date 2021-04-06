@@ -1,29 +1,26 @@
 const translation = {
     en: {
         translation: {
-            LATEST_SUPER_LIKED: 'Latest SuperLikes',
-            MOST_SUPER_LIKED: 'Most SuperLikes',
-            MOST_LIKE: 'Most likes',
+            LATEST_SUPER_LIKED: 'Popular',
+            MOST_SUPER_LIKED: 'Headlines',
+            MOST_LIKE: 'Latest',
             WAITING_BE_LIKED: 'Waiting to be liked',
-            YOUTUBE_STEP2: 'Add the line "https://button.like.co/yourLikerID" at the end of the video description',
         },
     },
     'zh-CN': {
         translation: {
-            LATEST_SUPER_LIKED: '最新精选',
-            MOST_SUPER_LIKED: '最多認同',
-            MOST_LIKE: '最多按赞',
-            WAITING_BE_LIKED: '等待被喜欢',
-            YOUTUBE_STEP2: '在影片描述最后加上 https://button.like.co/yourLikerID',
+            LATEST_SUPER_LIKED: '流行',
+            MOST_SUPER_LIKED: '头条',
+            MOST_LIKE: '最新',
+            WAITING_BE_LIKED: '无人问津',
         },
     },
     'zh-TW': {
         translation: {
-            LATEST_SUPER_LIKED: '最新精選',
-            MOST_SUPER_LIKED: '最多認同',
-            MOST_LIKE: '最多按贊',
-            WAITING_BE_LIKED: '等待被喜歡',
-            YOUTUBE_STEP2: '在影片描述最後加上 https://button.like.co/yourLikerID',
+            LATEST_SUPER_LIKED: '流行',
+            MOST_SUPER_LIKED: '頭條',
+            MOST_LIKE: '最新',
+            WAITING_BE_LIKED: '無人問津',
         },
     },
 };

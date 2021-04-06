@@ -80,14 +80,15 @@ function List() {
               toUrl(item.url)
             }}>
               {/* <YouTube videoId={item.origin.get('v')} opts={opts} /> */}
-              {item.image ? <div className="img" style={{
-                backgroundImage: `url(${item.image})`, width: '100%',
-                height: '200px',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat'
-              }}></div> : null}
-              <div className="desc">
-                {item.title}
+              <div className="title">
+                <div className="banner">
+                  {item.image ? <div className="img" style={{
+                    backgroundImage: `url(${item.image})`,
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat'
+                  }}></div> : null}
+                </div>
+                <div className="title-content">                {item.title}</div>
               </div>
               <div className="actions">
                 <div className="user">@{item.user}</div>

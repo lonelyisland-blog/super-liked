@@ -17,7 +17,7 @@ class Layout extends React.Component {
         >
           <header>
             <div className="avatar">
-
+              SuperLiked
             </div>
             <div className="user">
 
@@ -28,7 +28,7 @@ class Layout extends React.Component {
         <Footer>
           © {new Date().getFullYear()}, Built by
           {` `}
-          <a href="https://www.gatsbyjs.org">LikerCoin DAO</a>
+          <a href="https://www.gatsbyjs.org">LikeCoin DAO</a>
         </Footer>
       </Wrapper>
     )
@@ -37,6 +37,7 @@ class Layout extends React.Component {
 
 const Wrapper = styled.div`
   min-height: 100vh;
+  background-color: #f6ffff;
 `
 
 const Footer = styled.footer`

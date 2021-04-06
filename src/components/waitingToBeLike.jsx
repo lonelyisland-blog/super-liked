@@ -21,14 +21,26 @@ function List() {
     useEffect(() => {
         if (likeList.length === 0) {
             const temList = []
+            const temMap = new Map()
             Api.getGlobalList(config).then((res) => {
                 res.data.list.forEach((item) => {
                     temList.push(item)
+                    if (temMap.has(item.url)) {
+                        let temItem = temMap.get(item.url)
+                        temItem.times++
+                        if (!temItem.likers.find((ele) => ele === item.liker)) {
+                            temItem.likers.push(item.liker)
+                        }
+                        temMap.set(item.url, temItem)
+                    } else {
+                        item.times = 0
+                        item.likers = [item.liker]
+                        temMap.set(item.url, item)
+                    }
                 })
-                setLikeList(temList.slice(0))
-                console.log(temList)
-                console.log(_.uniqBy(temList.slice(0), 'url'));
+                const mapList = Array.from(temMap, ([name, value]) => (value));
 
+                setLikeList(_.sortBy(mapList, 'times'))
             });
         } else {
             getMoreContent()
@@ -83,14 +95,15 @@ function List() {
                             toUrl(item.url)
                         }}>
                             {/* <YouTube videoId={item.origin.get('v')} opts={opts} /> */}
-                            {item.image ? <div className="img" style={{
-                                backgroundImage: `url(${item.image})`, width: '100%',
-                                height: '200px',
-                                backgroundSize: 'cover',
-                                backgroundRepeat: 'no-repeat'
-                            }}></div> : null}
-                            <div className="desc">
-                                {item.title}
+                            <div className="title">
+                                <div className="banner">
+                                    {item.image ? <div className="img" style={{
+                                        backgroundImage: `url(${item.image})`,
+                                        backgroundSize: 'cover',
+                                        backgroundRepeat: 'no-repeat'
+                                    }}></div> : null}
+                                </div>
+                                <div className="title-content">                {item.title}</div>
                             </div>
                             <div className="actions">
                                 <div className="user">@{item.user}</div>
