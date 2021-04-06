@@ -38,7 +38,7 @@ function List() {
 
 
   const loadMore = () => {
-    setIndex(index + 5)
+    setIndex(index + 10)
   }
 
   const toUrl = (url) => {
@@ -48,7 +48,7 @@ function List() {
   }
 
   const getMoreContent = () => {
-    let temList = likeList.slice(index, index + 5)
+    let temList = likeList.slice(index, index + 10)
     let infoList = []
     const fn = (info) => {
       return Api.getSuperLikeInfo(info)
