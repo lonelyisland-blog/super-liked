@@ -82,7 +82,7 @@ function List() {
         })
     }
     return (
-        <div className="head-line-list animate__animated animate__fadeInUp" >
+        <div className="head-line-list animate__animated animate__fadeIn" >
             <InfiniteScroll
                 dataLength={displayList.length}
                 next={loadMore}
