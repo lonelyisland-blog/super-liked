@@ -17,14 +17,23 @@ function ListSwiter(key) {
   switch (key) {
     case 'LatestSuperLikes':
       window.location.hash = '#LatestSuperLikes';
+      break;
     case 'MostSuperLikes':
       window.location.hash = '#MostSuperLikes';
+      break;
+
     case 'MostLikes':
       window.location.hash = '#LatestContent';
+      break;
+
     case 'WatingToBeLiked':
       window.location.hash = '#WatingToBeLiked';
+      break;
+
     default:
       return null;
+      break;
+
   }
 }
 function IndexPage(props) {
@@ -33,6 +42,7 @@ function IndexPage(props) {
   const { t, i18n } = useTranslation();
   const switchSwitcher = (key) => {
     setSwitcher(key)
+    ListSwiter(switcher)
   }
   return (
     <Layout location={props.location} title={siteTitle}>
@@ -50,7 +60,6 @@ function IndexPage(props) {
       <div className={switcher === 'WatingToBeLiked' ? 'list-display' : 'list-hide'}>      <WatingToBeLiked />
       </div>
 
-      {ListSwiter(switcher)}
       <div className="switcher">
         <div onClick={() => switchSwitcher('MostSuperLikes')} className="most-superliked">{t('MOST_SUPER_LIKED')}</div>
         <div onClick={() => switchSwitcher('LatestSuperLikes')} className="latest ">{t('LATEST_SUPER_LIKED')}</div>
