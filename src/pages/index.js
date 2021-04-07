@@ -14,28 +14,28 @@ import WatingToBeLiked from '../components/waitingToBeLike'
 import '../styles/pages/index.scss'
 
 function ListSwiter(key) {
-  if(typeof window !== 'undefined'){
-  switch (key) {
-    case 'LatestSuperLikes':
-      window.location.hash = '#LatestSuperLikes';
-      break;
-    case 'MostSuperLikes':
-      window.location.hash = '#MostSuperLikes';
-      break;
+  if (typeof window !== 'undefined') {
+    switch (key) {
+      case 'LatestSuperLikes':
+        window.location.hash = '#LatestSuperLikes';
+        break;
+      case 'MostSuperLikes':
+        window.location.hash = '#MostSuperLikes';
+        break;
 
-    case 'MostLikes':
-      window.location.hash = '#LatestContent';
-      break;
+      case 'MostLikes':
+        window.location.hash = '#LatestContent';
+        break;
 
-    case 'WatingToBeLiked':
-      window.location.hash = '#WatingToBeLiked';
-      break;
+      case 'WatingToBeLiked':
+        window.location.hash = '#WatingToBeLiked';
+        break;
 
-    default:
-      return null;
-      break;
+      default:
+        return null;
+        break;
 
-  }
+    }
   }
 }
 function IndexPage(props) {
@@ -49,7 +49,7 @@ function IndexPage(props) {
   return (
     <Layout location={props.location} title={siteTitle}>
       <SEO
-        title=""
+        title={switcher}
         keywords={[`superlike`, `likecoin`, `bitcoin`, `ipfs`]}
       />
 
