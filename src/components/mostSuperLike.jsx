@@ -9,11 +9,9 @@ import initLottie from '../utils/lottie'
 
 function List() {
     const [likeList, setLikeList] = useState([])
-    const [mostSuperLikeList, setMostSuperLikeList] = useState([])
-    const [mostLikeList, setMostLikeList] = useState([])
     const [index, setIndex] = useState(0);
     const [displayList, setDisplayList] = useState([])
-    const preIndex = usePrevious(index)
+    const [hasMore, setHasMore] = useState(true)
     const [config, setConfig] = useState({
         before: '',
         after: '',
@@ -62,6 +60,10 @@ function List() {
     }
 
     const getMoreContent = () => {
+        if (index > likeList.length) {
+            setHasMore(false)
+            return
+        }
         let temList = likeList.slice(index, index + 4)
         let infoList = []
         const fn = (info) => {
@@ -90,8 +92,9 @@ function List() {
             <InfiniteScroll
                 dataLength={displayList.length}
                 next={loadMore}
-                hasMore={true}
+                hasMore={hasMore}
                 loader={<h4 className="head-line-list-loading list-loading animate__animated animate__fadeIn">loading</h4>}
+                endMessage={<h4 className="latest-super-like-list-loading">TheEnd...</h4>}
                 scrollableTarget="HeadLineList"
             >
                 {

@@ -1,10 +1,13 @@
 @media(max-width: 768px){
+    .head-line-list-loading{
+        width: 100vw;
+        text-align: center;
+    }
     .head-line-list{
         width: 100vw;
-        height: calc(100vh - 80px);
+        height: calc(100vh - 65px);
         background-color: #f6ffff;
         overflow: auto;
-
         .content-container{
             // border-top:1px solid #e6e6e6;
             border-bottom: 1px solid #e6e6e6;
@@ -28,6 +31,7 @@
             .desc{
                 margin: 5px 15px 5px 15px;
                 font-size: 15px;
+                color:rgb(128, 128, 128) ;
             }
             .actions{
                 margin: 5px 15px 5px 15px;

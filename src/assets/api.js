@@ -5,7 +5,30 @@ const instance = axios.create({
     timeout: 10000
 });
 
+const likecoinMainNet = axios.create({
+    baseURL: "https://mainnet-node.like.co",
+    timeout: 10000
+})
+
 const api = {
+    getPrice() {
+        return axios.get('https://api.coingecko.com/api/v3/simple/price?ids=likecoin&vs_currencies=usd')
+    },
+    getAddressBalance(address) {
+        return likecoinMainNet.get(`/bank/balances/${address}`)
+    },
+    getAddressReward(address) {
+        return likecoinMainNet.get(`/distribution/delegators/${address}/rewards
+        `)
+    },
+    getAddressDelegations(address) {
+        return likecoinMainNet.get(`/staking/delegators/${address}/delegations
+        `)
+    },
+    getAddressUnDelegations(address) {
+        return likecoinMainNet.get(`/staking/delegators/${address}/unbonding_delegations
+        `)
+    },
     getGlobalList(config) {
         const params = new URLSearchParams();
         params.append('after', config.after);
