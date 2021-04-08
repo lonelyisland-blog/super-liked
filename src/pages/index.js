@@ -66,8 +66,8 @@ function IndexPage(props) {
 
       <div className="switcher">
         <div onClick={() => switchSwitcher('MostSuperLikes')} className="most-superliked">{t('MOST_SUPER_LIKED')}</div>
-        <div onClick={() => switchSwitcher('LatestSuperLikes')} className="latest ">{t('LATEST_SUPER_LIKED')}</div>
-        <div onClick={() => switchSwitcher('MostLikes')} className="most-liked">{t('MOST_LIKE')}</div>
+        {/* <div onClick={() => switchSwitcher('LatestSuperLikes')} className="latest ">{t('LATEST_SUPER_LIKED')}</div> */}
+        {/* <div onClick={() => switchSwitcher('MostLikes')} className="most-liked">{t('MOST_LIKE')}</div> */}
         <div onClick={() => switchSwitcher('WatingToBeLiked')} className="waiting-be-liked">{t('WAITING_BE_LIKED')}</div>
       </div>
     </Layout>

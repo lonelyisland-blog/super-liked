@@ -63,11 +63,21 @@ class myWallet extends React.Component {
             res.forEach(({ value }) => {
                 console.log(value)
             })
+            let delegations = 0
+            let unDelegations = 0
+            res[2].value?.data?.result.forEach((item) => {
+                console.log('balance', item.balance)
+                delegations += (item.balance / 1000000000)
+            })
+            res[3].value?.data?.result.forEach((item) => {
+                unDelegations += (item.balance / 1000000000)
+            })
+            console.log(delegations, unDelegations)
             this.setState(({
                 balance: res[0].value?.data?.result[0]?.amount,
                 reward: res[1].value?.data?.result?.total[0]?.amount,
-                delegation: res[2].value?.data?.result[0]?.balance,
-                unDelegation: res[3].value?.data?.result[0]?.amount,
+                delegation: delegations,
+                unDelegation: unDelegations,
                 priceUsd: res[4].value.data.likecoin.usd
             }))
         })
@@ -114,7 +124,7 @@ class myWallet extends React.Component {
                     }
                     {
                         haveAddress ? <div className="total-coins animate__animated animate__fadeInUp">
-                            <div className="usd">{i18n.t('FIAT')} : {(((balance / 1000000000 || 0) + (reward / 1000000000 || 0) + (delegation / 1000000000 || 0) + (unDelegation / 1000000000 || 0)) * priceUsd).toFixed(2)} USD
+                            <div className="usd">{i18n.t('FIAT')} : {(((balance / 1000000000 || 0) + (reward / 1000000000 || 0) + (delegation || 0) + (unDelegation || 0)) * priceUsd).toFixed(2)} USD
                                 <div className="tips">
                                     <Tooltip title={i18n.t('WALLET_TIPS')}>
                                         <Button><LiveHelpIcon /></Button>
@@ -123,9 +133,9 @@ class myWallet extends React.Component {
                             </div>
                             <div className="balance">{i18n.t('BALANCE')} : {(balance / 1000000000 || 0).toFixed(2)} Like</div>
                             <div className="balance">{i18n.t('REWARD')} : {(reward / 1000000000 || 0).toFixed(2)} Like</div>
-                            <div className="balance">{i18n.t('DELEGATION')} : {(delegation / 1000000000 || 0).toFixed(2)} Like</div>
-                            <div className="balance">{i18n.t('UN_DELEGATION')} : {(unDelegation / 1000000000 || 0).toFixed(2)} Like</div>
-                            <div className="balance">{i18n.t('TOTAL')} : {(((balance / 1000000000 || 0) + (reward / 1000000000 || 0) + (delegation / 1000000000 || 0) + (unDelegation / 1000000000 || 0))).toFixed(2)} Like</div>
+                            <div className="balance">{i18n.t('DELEGATION')} : {(delegation || 0).toFixed(2)} Like</div>
+                            <div className="balance">{i18n.t('UN_DELEGATION')} : {(unDelegation || 0).toFixed(2)} Like</div>
+                            <div className="balance">{i18n.t('TOTAL')} : {(((balance / 1000000000 || 0) + (reward / 1000000000 || 0) + (delegation || 0) + (unDelegation || 0))).toFixed(2)} Like</div>
 
                         </div> : null
                     }
