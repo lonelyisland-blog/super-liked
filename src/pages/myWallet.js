@@ -59,20 +59,17 @@ class myWallet extends React.Component {
             return Api.getAddressUnDelegations(address)
         }
         Promise.allSettled([getBalance(address), getReward(address), getAddressDelegations(address), getAddressUnDelegations(address), Api.getPrice()]).then((res) => {
-            console.log(res)
-            res.forEach(({ value }) => {
-                console.log(value)
-            })
+
             let delegations = 0
             let unDelegations = 0
             res[2].value?.data?.result.forEach((item) => {
-                console.log('balance', item.balance)
                 delegations += (item.balance / 1000000000)
             })
             res[3].value?.data?.result.forEach((item) => {
-                unDelegations += (item.balance / 1000000000)
+                item.entries.forEach((ele) => {
+                    unDelegations += (ele.balance / 1000000000)
+                })
             })
-            console.log(delegations, unDelegations)
             this.setState(({
                 balance: res[0].value?.data?.result[0]?.amount,
                 reward: res[1].value?.data?.result?.total[0]?.amount,
@@ -103,7 +100,6 @@ class myWallet extends React.Component {
     render() {
         const { data } = this.props
         const siteTitle = data.site.siteMetadata.title
-        console.log(this)
         const { balance, reward, delegation, unDelegation, priceUsd, haveAddress } = this.state;
 
         return (
