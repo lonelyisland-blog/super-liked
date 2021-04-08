@@ -66,7 +66,7 @@ class myWallet extends React.Component {
                 delegations += (item.balance / 1000000000)
             })
             res[3].value?.data?.result.forEach((item) => {
-                item.entries.forEach((ele) => {
+                item?.entries?.forEach((ele) => {
                     unDelegations += (ele.balance / 1000000000)
                 })
             })
