@@ -6,7 +6,11 @@ import translation from './config'
 const resources = translation;
 let lang = 'zh-TW';
 if (typeof window !== 'undefined') {
-    lang = navigator.language
+    if (navigator.language !== 'zh-TW' || navigator.language !== 'en' || navigator.language !== 'zh-CN') {
+        lang = 'zh-TW';
+    } else {
+        lang = navigator.language
+    }
 }
 
 i18n

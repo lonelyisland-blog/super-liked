@@ -6,35 +6,55 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import _ from 'lodash'
 import '../styles/components/list.scss'
 import initLottie from '../utils/lottie'
+import { last30dates } from '../utils/util'
 function List() {
     const [likeList, setLikeList] = useState([])
     const [index, setIndex] = useState(0);
     const [displayList, setDisplayList] = useState([])
     const [hasMore, setHasMore] = useState(true)
-    const [config, setConfig] = useState({
-        before: '',
-        after: '',
+    const dates = last30dates().reverse()
+    let day = 0
+    let yes = 1
+    let config = {
+        before: Date.now(),
+        after: new Date(dates[1]).getTime(),
         limit: 200,
-    })
-    const [timer, setTimer] = useState('')
+    }
     useEffect(() => {
-        if (likeList.length === 0) {
-            const temList = []
-            Api.getLatestContent(config).then((res) => {
-                res.data.list.forEach((item) => {
-                    temList.push(item)
-                })
-                setLikeList(temList.slice(0))
-            });
-        } else {
+        if (likeList.length > 0) {
             getMoreContent()
+        } else {
+            getContent(config)
         }
-        initLottie('.latest-content-list-loading')
-    }, [config, likeList, index]);
+    }, [likeList, index]);
+
+
+    const getContent = (config) => {
+        const temList = []
+        Api.getLatestContent(config).then((res) => {
+            res.data.list.forEach((item) => {
+                const temUrl = new URL(item.url)
+                if (temUrl.origin === "https://www.youtube.com") {
+                    temList.push(item)
+                }
+            })
+            setLikeList(likeList.concat(temList.slice(0)))
+        });
+    }
 
 
     const loadMore = () => {
         setIndex(index + 10)
+        if (index > likeList.length - 10) {
+            day = yes
+            yes++
+            let config = {
+                before: new Date(dates[day]).getTime(),
+                after: new Date(dates[yes]).getTime(),
+                limit: 200,
+            }
+            getContent(config)
+        }
     }
 
     const toUrl = (url) => {
@@ -44,10 +64,6 @@ function List() {
     }
 
     const getMoreContent = () => {
-        if (index > likeList.length) {
-            setHasMore(false)
-            return
-        }
         let temList = likeList.slice(index, index + 10)
         let infoList = []
         const fn = (info) => {
@@ -65,9 +81,6 @@ function List() {
                     infoList.push(data.value.data)
                 }
             })
-            if (infoList.length < 5) {
-                loadMore()
-            }
             setDisplayList(displayList.concat(infoList))
         }).catch((err) => {
             console.log('err', err)

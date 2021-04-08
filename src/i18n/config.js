@@ -28,7 +28,8 @@ const translation = {
             TOTAL: '全部',
             FIAT: '法币',
             CHANGE_ADDRESS: '修改地址',
-            WALLET_TIPS: '你的数据完全去中心，无人收集和存储，但是请不要清除浏览器数据。'
+            WALLET_TIPS: '你的数据完全去中心，无人收集和存储，但是请不要清除浏览器数据。',
+            VIDEOS: '视频',
 
 
         },
@@ -46,8 +47,8 @@ const translation = {
             TOTAL: '全部',
             FIAT: '法幣',
             CHANGE_ADDRESS: '修改地址',
-            WALLET_TIPS: '你的數據完全去中心化，無人收集和存儲，但是請不要清除瀏覽器數據。'
-
+            WALLET_TIPS: '你的數據完全去中心化，無人收集和存儲，但是請不要清除瀏覽器數據。',
+            VIDEOS: '影片',
 
         },
     },
