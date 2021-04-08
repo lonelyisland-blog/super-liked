@@ -44,5 +44,47 @@
     }
 }
 @media(min-width: 768px){
-    
+    .wallet-container{
+        width: 100%;
+        .address-location{
+            height: 50vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .MuiButtonBase-root{
+                margin-top: 20px;
+                background-color:  #28646e;
+            }
+        }
+    }
+    .total-coins{
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        .usd{
+            font-size: 30px;
+            color: #28646e;
+            display: flex;
+            flex-direction: row;
+            .tips{
+                width: 10px;
+                margin-left: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        .balance{
+            font-size: 14px;
+        }
+    }
+    .change-address{
+        margin-left: 20px;
+        font-size: 12px;
+        color: #28646e;
+        text-decoration: underline;
+    }
 }

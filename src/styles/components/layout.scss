@@ -47,5 +47,51 @@
     }
 }
 @media(min-width: 768px){
+    main{
+        // height: calc(100vh - 80px);
+        // overflow-y: scroll;
+        margin-top: 39px;
+    }
+    header{
+        position: fixed;
+        top: 0;
+        z-index: 999;
+        width: 100vw;
+        height: 39px;
+        border-bottom: 1px solid #eee;
+        padding: 0px 20px 0px 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #fff;
+        .avatar{
+            a{
+                font-family: 'Caveat', cursive;
+                font-size: 23px;
+                color: #28646e !important;
+            }
+        }
+        .about{
+            position: absolute;
+            font-size: 25px;
+            right: 20px;
+        }
+        .wallet{
+            position: absolute;
+            font-size: 25px;
+            right: 20px;
+            a{
+                display: flex;
+                flex-direction: row;
+            }
+            img{
+                margin: 0;
+                padding: 0;
+                width: 30px;
+                height: auto;
+                display: flex;
+            }
+        }
+    }
     
 }
