@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { usePrevious } from '../hooks/hooks'
-import Api from '../assets/api';
+import Api from '../../assets/api';
 // import YouTube from 'react-youtube';
 import InfiniteScroll from "react-infinite-scroll-component";
 import _ from 'lodash'
-import '../styles/components/list.scss'
-import { last30dates } from '../utils/util'
+import '../../styles/components/list.scss'
+import { last30dates } from '../../utils/util'
 const temMap = new Map()
 
 function List() {
@@ -17,9 +16,7 @@ function List() {
     let day = 0
     let yes = 1
     let config = {
-        before: Date.now(),
-        after: new Date(dates[1]).getTime(),
-        limit: 200,
+        likerId: 'marvelamazing',
     }
     useEffect(() => {
         if (likeList.length > 0) {
@@ -30,38 +27,49 @@ function List() {
     }, [likeList, index]);
 
     const getContent = (config) => {
-        console.log(config)
         const temList = []
-        Api.getLatestContent(config).then((res) => {
+        Api.getContentById(config).then((res) => {
+            console.log(res)
             res.data.list.forEach((item) => {
-                if (temMap.has(item.url)) {
+                if (temMap.has(item.referrer)) {
                     return
                 } else {
-                    temMap.set(item.url, item)
+                    temMap.set(item.referrer, item)
                 }
-                const temUrl = new URL(item.url)
+                const temUrl = new URL(item.referrer)
                 if (temUrl.origin === "https://www.youtube.com") {
                     temList.push(item)
                 }
             })
-            setLikeList(likeList.concat(temList.slice(0)))
-            if (!dates[yes]) return
-            setTimeout(() => {
-                day = yes
-                yes = yes + 1
-                let config = {
-                    before: new Date(dates[day]).getTime(),
-                    after: new Date(dates[yes]).getTime(),
-                    limit: 200,
+            let infoList = []
+            const fn = (info) => {
+                return Api.getSuperLikeInfo(info)
+            }
+            Promise.allSettled(temList.map((item) => {
+                const info = {
+                    url: item.referrer,
+                    LIKE: ''
                 }
-                getContent(config)
-            }, 3000)
+                return fn(info)
+            })).then((res) => {
+                res.forEach((data) => {
+                    if (data.status === 'fulfilled') {
+                        infoList.push(data.value.data)
+                    }
+                })
+                setDisplayList(displayList.concat(infoList))
+            }).catch((err) => {
+                console.log('err', err)
+            })
+            // setLikeList(likeList.concat(temList.slice(0)))
+            // setDisplayList(likeList.concat(temList.slice(0)))
+
         });
     }
 
 
     const loadMore = () => {
-        setIndex(index + 10)
+        setIndex(index + 5)
     }
 
     const toUrl = (url) => {
@@ -71,34 +79,33 @@ function List() {
     }
 
     const getMoreContent = () => {
-        let temList = likeList.slice(index, index + 10)
-        let infoList = []
-        const fn = (info) => {
-            return Api.getSuperLikeInfo(info)
-        }
-        Promise.allSettled(temList.map((item) => {
-            const info = {
-                url: item.url,
-                LIKE: ''
-            }
-            return fn(info)
-        })).then((res) => {
-            res.forEach((data) => {
-                if (data.status === 'fulfilled') {
-                    infoList.push(data.value.data)
-                }
-            })
-            setDisplayList(displayList.concat(infoList))
-        }).catch((err) => {
-            console.log('err', err)
-        })
+        // let temList = likeList.slice(index, index + 5)
+        // let infoList = []
+        // const fn = (info) => {
+        //     return Api.getSuperLikeInfo(info)
+        // }
+        // Promise.allSettled(temList.map((item) => {
+        //     const info = {
+        //         url: item.url,
+        //         LIKE: ''
+        //     }
+        //     return fn(info)
+        // })).then((res) => {
+        //     res.forEach((data) => {
+        //         if (data.status === 'fulfilled') {
+        //             infoList.push(data.value.data)
+        //         }
+        //     })
+        //     setDisplayList(displayList.concat(infoList))
+        // }).catch((err) => {
+        //     console.log('err', err)
+        // })
     }
     return (
         <div id="LatestContentList" className="list animate__animated animate__fadeIn" >
             <InfiniteScroll
                 dataLength={displayList.length}
                 next={loadMore}
-                hasMore={hasMore}
                 loader={<h4 className="latest-content-list-loading">loading...</h4>}
                 endMessage={<h4 className="latest-super-like-list-loading">TheEnd...</h4>}
                 scrollableTarget="LatestContentList"

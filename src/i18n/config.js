@@ -12,7 +12,9 @@ const translation = {
             TOTAL: 'total',
             FIAT: 'Fiat',
             CHANGE_ADDRESS: 'Change address',
-            WALLET_TIPS: 'Your data is completely decentralized, no one collects and stores it, but please do not clear your browser data.'
+            WALLET_TIPS: 'Your data is completely decentralized, no one collects and stores it, but please do not clear your browser data.',
+            MARVEL_SERIES: 'Marvel series'
+
         },
     },
     'zh-CN': {
@@ -30,6 +32,8 @@ const translation = {
             CHANGE_ADDRESS: '修改地址',
             WALLET_TIPS: '你的数据完全去中心，无人收集和存储，但是请不要清除浏览器数据。',
             VIDEOS: '视频',
+            MARVEL_SERIES: '漫威的电视剧们'
+
 
 
         },
@@ -49,6 +53,8 @@ const translation = {
             CHANGE_ADDRESS: '修改地址',
             WALLET_TIPS: '你的數據完全去中心化，無人收集和存儲，但是請不要清除瀏覽器數據。',
             VIDEOS: '影片',
+            MARVEL_SERIES: '漫威的電視劇們'
+
 
         },
     },

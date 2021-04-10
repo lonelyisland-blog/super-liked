@@ -48,6 +48,9 @@ const api = {
         params.append('url', config.url);
         params.append('LIKE', config.LIKE);
         return instance.get(`/like/info`, { params })
+    },
+    getContentById(config) {
+        return instance.get(`/like/info/user/${config.likerId}/latest?after=&before&limit=200`)
     }
 }
 export default api;

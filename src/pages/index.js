@@ -11,13 +11,15 @@ import List from '../components/latestSuperLike'
 import MostLikes from '../components/latestContent'
 import MostSuperLikes from '../components/mostSuperLike'
 import WatingToBeLiked from '../components/waitingToBeLike'
+
+import Marvel from '../components/list/marvel'
 import '../styles/pages/index.scss'
 
 function ListSwiter(key) {
   if (typeof window !== 'undefined') {
     switch (key) {
-      case 'LatestSuperLikes':
-        window.location.hash = '#LatestSuperLikes';
+      case 'Marvel':
+        window.location.hash = '#Marvel';
         break;
       case 'MostSuperLikes':
         window.location.hash = '#MostSuperLikes';
@@ -58,7 +60,7 @@ function IndexPage(props) {
       <div className={switcher === 'LatestSuperLikes' ? 'list-display' : 'list-hide'}><List />
       </div>
 
-      <div className={switcher === 'MostLikes' ? 'list-display' : 'list-hide'} >      <MostLikes />
+      <div className={switcher === 'Marvel' ? 'list-display' : 'list-hide'} >      <Marvel />
       </div>
 
       <div className={switcher === 'WatingToBeLiked' ? 'list-display' : 'list-hide'}>      <WatingToBeLiked />
@@ -66,7 +68,7 @@ function IndexPage(props) {
 
       <div className="switcher">
         <div onClick={() => switchSwitcher('MostSuperLikes')} className="most-superliked">{t('MOST_SUPER_LIKED')}</div>
-        <div onClick={() => switchSwitcher('MostLikes')} className="most-liked">{t('VIDEOS')}</div>
+        <div onClick={() => switchSwitcher('Marvel')} className="most-liked">{t('MARVEL_SERIES')}</div>
       </div>
     </Layout>
   )
