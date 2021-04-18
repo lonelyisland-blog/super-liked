@@ -19,7 +19,7 @@ class Layout extends React.Component {
               <Link to="/"> SuperLiked</Link>
             </div>
             <div className="wallet animate__animated animate__fadeIn">
-              <Link to="/myWallet/">
+              <Link to="/login/">
                 <img src={likecoin} />
               </Link>
             </div>
