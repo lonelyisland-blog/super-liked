@@ -19,7 +19,7 @@ class Login extends React.Component {
         }
     }
     login() {
-        fetch('http://guanyun.nl/api/likecoin-auth', {
+        fetch('https://guanyun.nl/api/likecoin-auth', {
             method: 'GET',
             redirect: 'follow',
             // mode: 'no-cors'

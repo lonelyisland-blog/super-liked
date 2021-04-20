@@ -25,7 +25,7 @@ class Layout extends React.Component {
     }
   }
   login() {
-    fetch('http://guanyun.nl/api/likecoin-auth', {
+    fetch('https://guanyun.nl/api/likecoin-auth', {
       method: 'GET',
       redirect: 'follow',
       // mode: 'no-cors'
@@ -45,7 +45,7 @@ class Layout extends React.Component {
     })
   }
   getAccess(code) {
-    fetch('http://guanyun.nl/api/likecoin-profile', {
+    fetch('https://guanyun.nl/api/likecoin-profile', {
       method: 'POST',
       redirect: 'follow',
       body: JSON.stringify({ code: code })
