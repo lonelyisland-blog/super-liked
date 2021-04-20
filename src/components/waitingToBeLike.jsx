@@ -91,7 +91,6 @@ function List() {
             console.log('err', err)
         })
     }
-    console.log(displayList)
     return (
         <div id="WaitToBeLike" className="list animate__animated animate__fadeIn" >
             <InfiniteScroll

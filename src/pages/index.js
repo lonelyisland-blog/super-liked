@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import '../i18n/i18n';
 import 'animate.css'
@@ -9,9 +9,9 @@ import SEO from "../components/seo"
 import Button from "../components/button"
 import List from '../components/latestSuperLike'
 import MostLikes from '../components/latestContent'
-import MostSuperLikes from '../components/mostSuperLike'
+import Superliked from '../components/mostSuperLike'
 import WatingToBeLiked from '../components/waitingToBeLike'
-
+import storage from 'localforage'
 import Marvel from '../components/list/marvel'
 import '../styles/pages/index.scss'
 
@@ -21,8 +21,8 @@ function ListSwiter(key) {
       case 'Marvel':
         window.location.hash = '#Marvel';
         break;
-      case 'MostSuperLikes':
-        window.location.hash = '#MostSuperLikes';
+      case 'Superliked':
+        window.location.hash = '#Superliked';
         break;
 
       case 'MostLikes':
@@ -41,13 +41,17 @@ function ListSwiter(key) {
   }
 }
 function IndexPage(props) {
-  const siteTitle = "Gatsby Starter Personal Website"
-  const [switcher, setSwitcher] = useState('MostSuperLikes')
+  const siteTitle = "Superliked"
+  const [switcher, setSwitcher] = useState('Superliked')
   const { t, i18n } = useTranslation();
   const switchSwitcher = (key) => {
     setSwitcher(key)
     ListSwiter(switcher)
   }
+  useEffect(() => {
+    // Update the document title using the browser API
+  });
+
   return (
     <Layout location={props.location} title={siteTitle}>
       <SEO
@@ -55,7 +59,7 @@ function IndexPage(props) {
         keywords={[`superlike`, `likecoin`, `bitcoin`, `ipfs`]}
       />
 
-      <div className={switcher === 'MostSuperLikes' ? 'list-display' : 'list-hide'}><MostSuperLikes />
+      <div className={switcher === 'Superliked' ? 'list-display' : 'list-hide'}><Superliked />
       </div>
       <div className={switcher === 'LatestSuperLikes' ? 'list-display' : 'list-hide'}><List />
       </div>
@@ -67,8 +71,8 @@ function IndexPage(props) {
       </div>
 
       <div className="switcher">
-        <div onClick={() => switchSwitcher('MostSuperLikes')} className="most-superliked">{t('MOST_SUPER_LIKED')}</div>
-        <div onClick={() => switchSwitcher('Marvel')} className="most-liked">{t('MARVEL_SERIES')}</div>
+        <div onClick={() => switchSwitcher('Superliked')} className="most-superliked">{t('MOST_SUPER_LIKED')}</div>
+        <Link to="/myWallet/"><div className="most-liked">{t('FIAT')}</div></Link>
       </div>
     </Layout>
   )

@@ -3,21 +3,34 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import '../styles/pages/about.scss'
+import storage from 'localforage'
+import queryString from 'query-string';
+import likecoin from '../../content/assets/likecoin.png'
+
+import '../styles/pages/login.scss'
 class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            "user": "",
+            "displayName": "",
+            "avatar": "",
+            "access_token": ""
+        }
+    }
     login() {
         fetch('http://localhost:3000/api/likecoin-auth', {
             method: 'GET',
             redirect: 'follow',
             // mode: 'no-cors'
         }).then((res) => {
-            console.log(res)
             res.json().then((data) => {
-                console.log(data)
                 window.location.href = data.data;
             })
-            // window.location.href = res.data;
         })
+    }
+    componentDidMount() {
+
     }
     render() {
         const { data } = this.props
@@ -27,7 +40,10 @@ class Login extends React.Component {
             <Layout location={this.props.location} title={siteTitle}>
                 <SEO title="Login with likerId" />
                 <div className="login-with-likerId">
-                    <div className="login" onClick={this.login.bind(this)}>login</div>
+                    <button className="login-button">
+                        <img className="avatar" src={likecoin} />
+                        <div className="login" onClick={this.login.bind(this)}>Sign in with Liker ID</div>
+                    </button>
                 </div>
             </Layout>
         )

@@ -1,0 +1,28 @@
+.login-with-likerId{
+    width: 100%;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .login-button{
+        background-color: #fff;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        border-radius: 10px;
+        border: 1px solid #eee;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        .avatar{
+            height: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        .login{
+            height: 30px;
+            line-height: 30px;
+            margin-left: 20px;
+        }
+    }
+}

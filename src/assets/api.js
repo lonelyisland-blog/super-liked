@@ -51,6 +51,12 @@ const api = {
     },
     getContentById(config) {
         return instance.get(`/like/info/user/${config.likerId}/latest?after=&before&limit=200`)
+    },
+    getUserProfile(config) {
+        const headers = {
+            headers: { Authorization: `Bearer ${config.token}` }
+        };
+        return instance.get(`/users/profile`, headers)
     }
 }
 export default api;

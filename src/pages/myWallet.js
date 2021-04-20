@@ -1,7 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { TextField, Button, Tooltip } from '@material-ui/core'
-import LiveHelpIcon from '@material-ui/icons/LiveHelp'; import storage from 'localforage'
+import LiveHelpIcon from '@material-ui/icons/LiveHelp'
+import storage from 'localforage'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Api from '../assets/api'

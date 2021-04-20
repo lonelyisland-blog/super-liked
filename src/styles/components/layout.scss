@@ -28,13 +28,15 @@
             font-size: 25px;
             right: 20px;
         }
-        .wallet{
+        .user-state{
             position: absolute;
             font-size: 25px;
             right: 20px;
             a{
                 display: flex;
                 flex-direction: row;
+                font-size: 14px;
+                color: #28646e;
             }
             img{
                 margin: 0;
@@ -42,6 +44,8 @@
                 width: 30px;
                 height: auto;
                 display: flex;
+                border-radius: 10px;
+
             }
         }
     }
@@ -76,7 +80,7 @@
             font-size: 25px;
             right: 20px;
         }
-        .wallet{
+        .user-state{
             position: absolute;
             font-size: 25px;
             right: 20px;
@@ -90,6 +94,7 @@
                 width: 30px;
                 height: auto;
                 display: flex;
+                border-radius: 10px;
             }
         }
     }
