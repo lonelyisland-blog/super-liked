@@ -85,8 +85,10 @@ class Layout extends React.Component {
     const code = queryString.parse(location.search).code
     if (code && code.length > 0) {
       storage.setItem('auth_code', code)
+      this.getAccess(code)
     } else {
       storage.getItem('auth_code', (err, res) => {
+        this.getAccess(res)
       })
     }
   }
