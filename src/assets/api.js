@@ -57,6 +57,11 @@ const api = {
             headers: { Authorization: `Bearer ${config.token}` }
         };
         return instance.get(`/users/profile`, headers)
+    },
+    getLikedList(config) {
+        const params = new URLSearchParams();
+        params.append('referrer', config.referrer);
+        return instance.get(`/like/likebutton/${id}/list`, { params })
     }
 }
 export default api;

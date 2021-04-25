@@ -25,7 +25,7 @@ class Layout extends React.Component {
     }
   }
   login() {
-    fetch('https://guanyun.nl/api/likecoin-auth', {
+    fetch('http://localhost:3000/api/likecoin-auth', {
       method: 'GET',
       redirect: 'follow',
       // mode: 'no-cors'
@@ -45,7 +45,7 @@ class Layout extends React.Component {
     })
   }
   getAccess(code) {
-    fetch('https://guanyun.nl/api/likecoin-profile', {
+    fetch('http://localhost:3000/api/likecoin-profile', {
       method: 'POST',
       redirect: 'follow',
       body: JSON.stringify({ code: code })
@@ -59,6 +59,7 @@ class Layout extends React.Component {
           temState.isLogin = true
           this.setState(temState)
           storage.setItem('access_token', temState.access_token)
+          storage.setItem('user_info', JSON.stringify(temState))
           this.getUserProfile(temState.access_token)
         })
       }
@@ -77,19 +78,23 @@ class Layout extends React.Component {
           console.log('err_access_token', err)
         }
         if (res) {
-          this.getUserProfile(res)
+          storage.getItem('user_info', (err, res) => {
+            if (res) {
+              const state = { ...this.state, ...JSON.parse(res) }
+              state.isLogin = true
+              this.setState(state)
+            }
+          })
         }
       })
     }
 
+    // if code exist 
     const code = queryString.parse(location.search).code
+
     if (code && code.length > 0) {
       storage.setItem('auth_code', code)
       this.getAccess(code)
-    } else {
-      storage.getItem('auth_code', (err, res) => {
-        this.getAccess(res)
-      })
     }
   }
   render() {
