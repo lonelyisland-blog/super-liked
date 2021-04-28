@@ -6,8 +6,7 @@ import { useTranslation } from "react-i18next"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Lottery from "../components/activity/activityList"
-import LotteryList from '../container/lottery/lotteryList'
+import LotteryList from '../container/lottery/lotteryList.jsx'
 import "../styles/pages/index.scss"
 
 //imgs
