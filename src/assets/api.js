@@ -11,7 +11,7 @@ const likecoinMainNet = axios.create({
 })
 
 const superLikedServer = axios.create({
-    baseURL: "http://104.155.203.99:2333/",
+    baseURL: "https://superliked.herokuapp.com/",
     timeout: 10000
 })
 
