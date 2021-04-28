@@ -3,6 +3,7 @@
 }
 html {
   overflow-y: unset;
+  background-color: #f1efe5;
 }
 a {
   box-shadow: none;
@@ -44,7 +45,7 @@ a {
     height: 100vh;
     position: fixed;
     z-index: 999;
-    bottom: 90px;
+    // bottom: 90px;
   }
   .create-lottery {
     position: fixed;

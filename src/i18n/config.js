@@ -15,8 +15,17 @@ const translation = {
             WALLET_TIPS: 'Your data is completely decentralized, no one collects and stores it, but please do not clear your browser data.',
             MARVEL_SERIES: 'Marvel series',
             LOTTERY: "Lottery",
-            LOTTERY_CREATOR: "Lottery Host"
-
+            LOTTERY_CREATOR: "Lottery Host",
+            LOTTERY_LINK: "Lottery Link",
+            LOTTERY_PRIZE: "獎品",
+            LOTTERY_PRIZE_TIPS: "比如 10000 個萊克幣，或者一本《區塊鏈社會學》",
+            LOTTERY_LINK_TIPS: "Please input the url which loaded LikeButton",
+            LOTTERY_TIMER: 'Lottery Timer',
+            LOTTERY_DESCRIPTION: "開獎規則",
+            LOTTERY_DESCRIPTION_TIPS: "你希望的開獎規則，比如第一名得到全部獎品，抑或是前三名平均瓜分",
+            LOTTERY_CONTACT: "Lottery contact",
+            LOTTERY_CONTACT_TIPS: "Signal,Matters ID,Email,LikerID",
+            START_LOTTERY: "Start Lottery"
         },
     },
     'zh-CN': {
@@ -36,7 +45,19 @@ const translation = {
             VIDEOS: '视频',
             MARVEL_SERIES: '漫威的电视剧们',
             LOTTERY: "抽獎",
-            LOTTERY_CREATOR: "發起人"
+            LOTTERY_CREATOR: "發起人",
+            LOTTERY_LINK_TIPS: "請輸入你的文章/活動鏈接 請務必保證 url 最後一位是 /",
+            LOTTERY_PRIZE: "獎品",
+            LOTTERY_PRIZE_TIPS: "比如 10000 個萊克幣，或者一本《區塊鏈社會學》",
+            LOTTERY_LINK: "發起 url",
+            LOTTERY_TIMER: '倒計時',
+            LOTTERY_TIMER_TIPS: '你希望幾小時後開獎，0 爲立即開獎',
+            LOTTERY_DESCRIPTION: "開獎規則",
+            LOTTERY_CONTACT: "聯繫信息",
+            LOTTERY_CONTACT_TIPS: "你的 Matters ID,Email,LikerID",
+            LOTTERY_DESCRIPTION_TIPS: "你希望的開獎規則，比如第一名得到全部獎品，抑或是前三名平均瓜分",
+            START_LOTTERY: "發起抽獎"
+
 
         },
     },
@@ -57,7 +78,19 @@ const translation = {
             VIDEOS: '影片',
             MARVEL_SERIES: '漫威的電視劇們',
             LOTTERY: "抽獎",
-            LOTTERY_CREATOR: "發起人"
+            LOTTERY_CREATOR: "發起人",
+            LOTTERY_PRIZE: "獎品",
+            LOTTERY_PRIZE_TIPS: "比如 10000 個萊克幣，或者一本《區塊鏈社會學》",
+            LOTTERY_LINK_TIPS: "請輸入你的文章/活動鏈接 請務必保證 url 最後一位是 /",
+            LOTTERY_LINK: "發起 url",
+            LOTTERY_TIMER: '倒計時',
+            LOTTERY_TIMER_TIPS: '你希望幾小時後開獎，0 爲立即開獎',
+            LOTTERY_DESCRIPTION: "開獎規則",
+            LOTTERY_CONTACT: "聯繫信息",
+            LOTTERY_CONTACT_TIPS: "你的 Matters ID,Email,LikerID",
+            LOTTERY_DESCRIPTION_TIPS: "你希望的開獎規則，比如第一名得到全部獎品，抑或是前三名平均瓜分",
+            START_LOTTERY: "發起抽獎"
+
 
         },
     },

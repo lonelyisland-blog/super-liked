@@ -10,6 +10,11 @@ const likecoinMainNet = axios.create({
     timeout: 10000
 })
 
+const superLikedServer = axios.create({
+    baseURL: "http://104.155.203.99:2333/",
+    timeout: 10000
+})
+
 const api = {
     getPrice() {
         return axios.get('https://api.coingecko.com/api/v3/simple/price?ids=likecoin&vs_currencies=usd')
@@ -60,8 +65,14 @@ const api = {
     },
     getLikedList(config) {
         const params = new URLSearchParams();
-        params.append('referrer', config.referrer);
-        return instance.get(`/like/likebutton/${id}/list`, { params })
+        // params.append('referrer', encodeURI(config.referrer));
+        return instance.get(`/like/likebutton/${config.id}/list?referrer=${config.referrer}`)
+    },
+    getLotteryList(config) {
+        return superLikedServer.get('/lottery/get', config)
+    },
+    createLottery(config) {
+        return superLikedServer.post('/lottery/create', config)
     }
 }
 export default api;

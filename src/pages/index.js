@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Lottery from "../components/activity/activityList"
-import CreateLottery from '../container/lottery/createLottery'
+import LotteryList from '../container/lottery/lotteryList'
 import "../styles/pages/index.scss"
 
 //imgs
@@ -27,7 +27,7 @@ function ListSwiter(key) {
 }
 function IndexPage(props) {
   const siteTitle = "Superliked"
-  const [switcher, setSwitcher] = useState("Superliked")
+  const [switcher, setSwitcher] = useState("Lottery")
   const [isLottery, setIsLottery] = useState(false)
   const { t, i18n } = useTranslation()
   const switchSwitcher = key => {
@@ -43,20 +43,16 @@ function IndexPage(props) {
   }, [isLottery, switcher])
 
   return (
-    <Layout location={props.location} title={siteTitle}>
+    <Layout location={props.location} title={siteTitle} className="animate__animated animate__fadeInUp animate__faster">
       <SEO
         title={switcher}
         keywords={[`superlike`, `likecoin`, `activity-creater`, `ipfs`]}
       />
       {switcher === "Lottery" ? (
         <div className="Lottery">
-          <Lottery />
+          <LotteryList />
         </div>
       ) : null}
-
-      <div className={isLottery ? 'animate__animated animate__fadeInUp animate__faster lottery-list-container' : 'animate__animated animate__bounceOutUp lottery-list-container list-hide'}>
-        <CreateLottery />
-      </div>
 
       <div className="switcher">
         <div onClick={() => switchSwitcher("Lottery")} className="Lotterys">
@@ -66,9 +62,11 @@ function IndexPage(props) {
           <div className="most-liked">{t("FIAT")}</div>
         </Link>
       </div>
-      <div className="create-lottery" onClick={setLottery}>
-        <img src={Create} />
-      </div>
+      <Link to="/createLottery/">
+        <div className="create-lottery" onClick={setLottery}>
+          <img src={Create} />
+        </div>
+      </Link>
     </Layout >
   )
 }

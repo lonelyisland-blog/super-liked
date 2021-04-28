@@ -19,7 +19,7 @@ class Login extends React.Component {
         }
     }
     login() {
-        fetch('http://localhost:3000/api/likecoin-auth', {
+        fetch('https://guanyun.nl/api/likecoin-auth', {
             method: 'GET',
             redirect: 'follow',
             // mode: 'no-cors'
@@ -39,7 +39,7 @@ class Login extends React.Component {
         return (
             <Layout location={this.props.location} title={siteTitle}>
                 <SEO title="Login with likerId" />
-                <div className="login-with-likerId">
+                <div className="login-with-likerId animate__animated animate__fadeInUp animate__faster">
                     <button className="login-button">
                         <img className="avatar" src={likecoin} />
                         <div className="login" onClick={this.login.bind(this)}>Sign in with Liker ID</div>

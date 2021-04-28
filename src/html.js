@@ -11,7 +11,7 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <style>
-          @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Exo:wght@300&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Baumans&display=swap');
         </style>
         {props.headComponents}
       </head>

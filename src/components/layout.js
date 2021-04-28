@@ -25,7 +25,7 @@ class Layout extends React.Component {
     }
   }
   login() {
-    fetch('http://localhost:3000/api/likecoin-auth', {
+    fetch('https://guanyun.nl/api/likecoin-auth', {
       method: 'GET',
       redirect: 'follow',
       // mode: 'no-cors'
@@ -45,7 +45,7 @@ class Layout extends React.Component {
     })
   }
   getAccess(code) {
-    fetch('http://localhost:3000/api/likecoin-profile', {
+    fetch('https://guanyun.nl/api/likecoin-profile', {
       method: 'POST',
       redirect: 'follow',
       body: JSON.stringify({ code: code })
@@ -132,7 +132,7 @@ class Layout extends React.Component {
 
 const Wrapper = styled.div`
   min-height: 100vh;
-  background-color: #f6ffff;
+  background-color: #f1efe5;
 `
 
 const Footer = styled.footer`
