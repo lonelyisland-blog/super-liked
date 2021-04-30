@@ -107,6 +107,10 @@ function LotteryDetail(props) {
           </div>
         </FormControl>
         <FormControl>
+          <FormHelperText>獎品</FormHelperText>
+          <div>{lottery.prize}</div>
+        </FormControl>
+        <FormControl>
           <FormHelperText>規則</FormHelperText>
           <div>{lottery.desc}</div>
         </FormControl>
