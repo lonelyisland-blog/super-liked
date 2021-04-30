@@ -35,4 +35,38 @@
   }
 }
 @media (min-width: 768px) {
+    .lottery-creator {
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    border-radius: 14px;
+    padding: 20px;
+    .start-lottery {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 20px;
+      .MuiButtonBase-root{
+        background-color: #136E73;
+        color: #fff;
+      }
+    }
+    .lottery-tips {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .MuiTextField-root,
+    .timer-selecter,
+    .MuiFormControl-root {
+      width: 100%;
+      margin-bottom: 10px;
+      .MuiInputLabel-shrink {
+        transform: translate(12px, -3.5px) scale(0.75);
+        transform-origin: top left;
+      }
+    }
+  }
 }

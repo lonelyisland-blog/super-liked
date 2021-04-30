@@ -69,4 +69,72 @@
   }
 }
 @media (min-width: 768px) {
+    .lottery-detail {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    .MuiFormControl-root {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      .MuiFormHelperText-root {
+        margin-bottom: 5px;
+      }
+    }
+    .lottery-user {
+      display: flex;
+      flex-direction: row;
+      img {
+        width: 30px;
+        border-radius: 10px;
+        margin: 0;
+        padding: 0;
+        margin-right: 10px;
+      }
+    }
+    .copy-container {
+      .location-url {
+        width: 100%;
+        border: 1px solid #27626d;
+        padding: 5px;
+        border-radius: 10px;
+        overflow-x: scroll;
+      }
+      .click {
+        margin-top: 5px;
+        border: 1px solid #27626d;
+      }
+    }
+    .lottery-results {
+      max-height: 345px;
+      overflow-y: scroll;
+      .result-item {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+        .prefix {
+          width: 30px;
+          img {
+            width: 30px;
+            margin: 0;
+          }
+          .number {
+            border: 1px solid #27626d;
+            border-radius: 50%;
+            height: 24px;
+            width: 24px;
+            text-align: center;
+            line-height: 20px;
+          }
+        }
+        .result-content {
+          margin-left: 5px;
+          height: 24px;
+          text-align: center;
+          line-height: 20px;
+        }
+        // justify-content: center;
+      }
+    }
+  }
 }

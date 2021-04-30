@@ -82,10 +82,18 @@
         .content-container{
             border-bottom: 1px solid #e6e6e6;
             margin: 20px 20px 20px 20px;
-
+            .banner{
+                // width: 100vw;
+                // height: 200px;
+                .img{
+                    width: 89vw;
+                    height: 164px;
+                    border-radius: 14px;
+                }
+            }
             .title{
                 margin: 5px 15px 5px 15px;
-                font-size: 14px;
+                font-size: 16px;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -101,13 +109,14 @@
                     }
                 }
                 .title-content{
-                    margin-left: 10px;
-                    font-size: 15px;
+                    font-size: 16px;
+                    font-weight: 500;
                 }
             }
             .desc{
+                font-size: 12px;
                 margin: 5px 15px 5px 15px;
-                font-size: 18px;
+                color: gray;
             }
             .actions{
                 margin: 5px 15px 5px 15px;
