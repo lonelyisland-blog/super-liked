@@ -103,4 +103,106 @@
   }
 }
 @media (min-width: 768px) {
+    .lottery-list {
+    width: 100vw;
+    padding-bottom: 52px;
+    // height: 100vh;
+    .infinite-scroll-component {
+      padding-top: 20px;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .lottery {
+      width: 90vw;
+      height: 265px;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      margin-bottom: 20px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      .title {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 30px;
+        /* identical to box height */
+
+        letter-spacing: 0.25px;
+
+        color: #000000;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .lottery-title {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .host-name {
+          margin-left: 5px;
+          font-weight: normal;
+          color: #26626d;
+        }
+        // flex-direction: row;
+        .host-avatar {
+          margin-right: 10px;
+          width: 30px;
+          height: 30px;
+          border-radius: 10px;
+          padding: 0;
+          margin-bottom: 0;
+        }
+      }
+      .host {
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+        .host-avatar {
+          // margin-left: 10px;
+          width: 30px;
+          height: 30px;
+          border-radius: 10px;
+          padding: 0;
+          margin-bottom: 0;
+        }
+        .host-name {
+        }
+      }
+      .prize {
+        background: #28646e;
+        padding: 7px;
+        border-radius: 10px;
+        margin-top: 15px;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 18px;
+        color: #fff;
+        letter-spacing: 0.75px;
+        overflow-x: scroll;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        height: 65px;
+      }
+      .likerList {
+        margin-top: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        height: 87px;
+        overflow: hidden;
+        .liker {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
 }
