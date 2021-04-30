@@ -83,7 +83,7 @@ function LotteryDetail(props) {
   return (
     <Layout location={props.location} title={siteTitle}>
       <SEO
-        title={"Lottery"}
+        title={lottery.title}
         keywords={[`superlike`, `likecoin`, `activity-creater`, `ipfs`]}
       />
       <ToastContainer
