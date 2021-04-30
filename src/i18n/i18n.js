@@ -5,13 +5,13 @@ import translation from './config'
 // (tip move them in a JSON file and import them)
 const resources = translation;
 let lang = 'zh-TW';
-if (typeof window !== 'undefined') {
-    if (navigator.language !== 'zh-TW' || navigator.language !== 'en' || navigator.language !== 'zh-CN') {
-        lang = 'zh-TW';
-    } else {
-        lang = navigator.language
-    }
-}
+// if (typeof window !== 'undefined') {
+//     if (navigator.language !== 'zh-TW' || navigator.language !== 'en' || navigator.language !== 'zh-CN') {
+//         lang = 'zh-TW';
+//     } else {
+//         lang = navigator.language
+//     }
+// }
 
 i18n
     .use(initReactI18next) // passes i18n down to react-i18next

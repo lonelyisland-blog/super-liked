@@ -1,10 +1,18 @@
 import React from "react"
 import { graphql } from "gatsby"
-
+import { FormHelperText, FormControl } from "@material-ui/core"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import '../styles/pages/about.scss'
+import LikeCoinButton from '../utils/like.button.sdk'
+import "../styles/pages/about.scss"
 class About extends React.Component {
+  componentDidMount() {
+    const likeButton = new LikeCoinButton({
+      likerId: "guanyun",
+      ref: document.querySelector("#like-button"),
+    })
+    likeButton.mount()
+  }
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
@@ -12,16 +20,14 @@ class About extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="SuperLiked.live opensource statement" />
-        <div className="open-source">OPENSOURCE STATEMENT</div>
-        <a className="open-source-text" href="https://github.com/LikeCoinDAO/super-liked" target="_blank">LikeCoin DAO</a>
-        <div className="about">
-          <ul>
-            <li>流行：最新被 SuperLike 的文章</li>
-            <li>頭條：最多 SuperLike 的文章</li>
-            <li>最新：在 LikeCoinChain 上最新產生的文章</li>
-            <li>無人問津：還未被很多人讚賞的文章</li>
-          </ul>
-        </div>
+        <FormControl className="about-form">
+          <FormHelperText>注意事項：</FormHelperText>
+          規則由發起人制定，但發起人只負責制定規則，抽獎結果由機器算法決定，在結果出來前，不管是本站還是發起人都無法知道抽獎結果。
+          <FormHelperText>小貼士：</FormHelperText>
+          定時抽獎和更多玩法還在開發中，如果建議和疑問，請聯繫 guanyun。
+          <FormHelperText>給發起者按個讚吧</FormHelperText>
+          <div id="like-button"></div>
+        </FormControl>
       </Layout>
     )
   }

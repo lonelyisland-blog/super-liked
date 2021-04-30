@@ -29,7 +29,7 @@ function LotteryList(props) {
   useEffect(() => {
     if (lotteryList.length === 0) {
       Api.getLotteryList().then(res => {
-        if(res.data.data.length ===0) return
+        if (res.data.data.length === 0) return
         setLotteryList(res.data.data)
         handleSetDisplayList(res.data.data)
       })
@@ -56,7 +56,6 @@ function LotteryList(props) {
             temList[ddx].likerList = data.value.data
           }
         })
-        console.log("temList", temList)
         setDisplayList(temList)
         setIndex(index + 5)
       })
@@ -64,24 +63,29 @@ function LotteryList(props) {
         console.log("err", err)
       })
   }
+  const goDetail = id => {
+    navigate(`/lotteryDetail?id=${id}`)
+  }
   const loadMore = () => {}
 
   return (
     <div
       id="LatestContentList"
-      className="lottery-list animate__animated animate__fadeIn"
+      className="lottery-list animate__animated animate__fadeInUp animate__faster"
     >
       <InfiniteScroll
         dataLength={10000}
         next={loadMore}
         loader={<h4 className="latest-content-list-loading">loading...</h4>}
-        endMessage={
-          <h4 className="latest-super-like-list-loading">TheEnd...</h4>
-        }
+        // endMessage={
+        //   <h4 className="latest-super-like-list-loading">TheEnd...</h4>
+        // }
         scrollableTarget="LatestContentList"
       >
         {displayList.map((item, ltx) => (
-          <div className="lottery" key={ltx}>
+          <div className="lottery" key={ltx} onClick={()=>{
+            goDetail(item.token)
+          }}>
             <div className="title">
               <div className="lottery-title">{item.title}</div>
               <div className="host-name">by {item.user}</div>
@@ -89,9 +93,7 @@ function LotteryList(props) {
             </div>
             <FormControl></FormControl>
             <FormControl className="prize">
-              <div>
-                {t("LOTTERY_PRIZE")}:{item.prize}
-              </div>
+              <div>{item.desc}</div>
             </FormControl>
             <FormControl>
               <div className="likerList">

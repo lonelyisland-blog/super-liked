@@ -1,84 +1,65 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import queryString from 'query-string';
-import storage from 'localforage'
+import queryString from "query-string"
+import storage from "localforage"
+import { ToastContainer, toast } from "material-react-toastify"
 
-import { rhythm, scale } from "../utils/typography"
-import '../styles/components/layout.scss'
-import likecoin from '../../content/assets/likecoin.png'
-import Api from '../assets/api'
-import api from "../assets/api";
+import "../styles/components/layout.scss"
+import Api from "../assets/api"
+
 class Layout extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       isLogin: false,
-      "user": "",
-      "displayName": "",
-      "avatar": "",
-      "cosmosWallet": "",
-      "isSubscribedCivicLiker": true,
-      "civicLikerSince": 0,
-      "refresh_token": "",
-      "access_token": "",
+      user: "",
+      displayName: "",
+      avatar: "",
+      cosmosWallet: "",
+      isSubscribedCivicLiker: true,
+      civicLikerSince: 0,
+      refresh_token: "",
+      access_token: "",
     }
   }
   login() {
-    fetch('https://guanyun.nl/api/likecoin-auth', {
-      method: 'GET',
-      redirect: 'follow',
-      // mode: 'no-cors'
-    }).then((res) => {
-      res.json().then((data) => {
-        window.location.href = data.data;
-      })
-      // window.location.href = res.data;
+    Api.getLikeCoinAuth().then(res => {
+      window.location.href = res.data.data
     })
   }
   getUserProfile(token) {
     const config = { token: token }
-    Api.getUserProfile(config).then((res) => {
+    Api.getUserProfile(config).then(res => {
       const state = { ...this.state, ...res.data }
       state.isLogin = true
       this.setState(state)
     })
   }
   getAccess(code) {
-    fetch('https://guanyun.nl/api/likecoin-profile', {
-      method: 'POST',
-      redirect: 'follow',
-      body: JSON.stringify({ code: code })
-      // mode: 'no-cors'
-    }).then((res) => {
-      if (res.status !== 200) {
-        this.setState({ isLogin: false })
-      } else {
-        res.json().then((data) => {
-          const temState = { ...this.state, ...JSON.parse(data.data) }
-          temState.isLogin = true
-          this.setState(temState)
-          storage.setItem('access_token', temState.access_token)
-          storage.setItem('user_info', JSON.stringify(temState))
-          this.getUserProfile(temState.access_token)
-        })
-      }
+    Api.getLikeCoinProfile({ code: code }).then(res => {
+      const temState = { ...this.state, ...JSON.parse(res.data.data) }
+      temState.isLogin = true
+      this.setState(temState)
+      storage.setItem("access_token", temState.access_token)
+      storage.setItem("user_info", JSON.stringify(temState))
+      this.getUserProfile(temState.access_token)
     })
   }
   componentDidMount() {
     // if access_token does not exist
-    if (!storage.getItem('access_token')) {
+    if (!storage.getItem("access_token")) {
       this.setState({
-        isLogin: false
+        isLogin: false,
       })
       return
     } else {
-      storage.getItem('access_token', (err, res) => {
+      storage.getItem("access_token", (err, res) => {
         if (err) {
-          console.log('err_access_token', err)
+          console.log("err_access_token", err)
         }
         if (res) {
-          storage.getItem('user_info', (err, res) => {
+          storage.getItem("user_info", (err, res) => {
             if (res) {
               const state = { ...this.state, ...JSON.parse(res) }
               state.isLogin = true
@@ -89,11 +70,11 @@ class Layout extends React.Component {
       })
     }
 
-    // if code exist 
+    // if code exist
     const code = queryString.parse(location.search).code
 
     if (code && code.length > 0) {
-      storage.setItem('auth_code', code)
+      storage.setItem("auth_code", code)
       this.getAccess(code)
     }
   }
@@ -104,35 +85,40 @@ class Layout extends React.Component {
     const blogPath = `${__PATH_PREFIX__}/blog/`
     return (
       <Wrapper>
-        <div
-        >
+        <div>
+          <ToastContainer
+            position="top-center"
+            autoClose={3000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+          />
           <header>
             <div className="avatar">
               <Link to="/"> SuperLiked</Link>
             </div>
             <div className="user-state animate__animated animate__fadeIn">
-              <Link to={!isLogin ? '/login/' : ''}>
-                {!isLogin ? '登录' : (
-                  <img src={avatar} />
-                )}
+              <Link to={!isLogin ? "/login/" : "/about"}>
+                {!isLogin ? "登录" : <img src={avatar} />}
               </Link>
             </div>
           </header>
           <main>{children}</main>
         </div>
         <Footer>
-          © {new Date().getFullYear()}, Built by
+          {/* © {new Date().getFullYear()}, Built by
           {` `}
-          <a href="https://discord.com/invite/W4DQ6peZZZ">LikeCoin DAO</a>
+          <a href="https://discord.com/invite/W4DQ6peZZZ">LikeCoin DAO</a> */}
         </Footer>
-      </Wrapper >
+      </Wrapper>
     )
   }
 }
 
 const Wrapper = styled.div`
   min-height: 100vh;
-  background-color: #f1efe5;
+  background-color: #f6ffff;
 `
 
 const Footer = styled.footer`

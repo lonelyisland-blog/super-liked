@@ -1,10 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
-
+import Api  from '../assets/api'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import storage from 'localforage'
-import queryString from 'query-string';
 import likecoin from '../../content/assets/likecoin.png'
 
 import '../styles/pages/login.scss'
@@ -19,14 +17,8 @@ class Login extends React.Component {
         }
     }
     login() {
-        fetch('https://guanyun.nl/api/likecoin-auth', {
-            method: 'GET',
-            redirect: 'follow',
-            // mode: 'no-cors'
-        }).then((res) => {
-            res.json().then((data) => {
-                window.location.href = data.data;
-            })
+        Api.getLikeCoinAuth().then((res)=>{
+            window.location.href = res.data.data;
         })
     }
     componentDidMount() {

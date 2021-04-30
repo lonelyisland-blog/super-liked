@@ -30,7 +30,6 @@ function List() {
     }, [likeList, index]);
 
     const getContent = (config) => {
-        console.log(config)
         const temList = []
         Api.getLatestContent(config).then((res) => {
             res.data.list.forEach((item) => {

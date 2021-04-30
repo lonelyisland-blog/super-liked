@@ -36,7 +36,7 @@ function CreateLottery(props) {
     contact: "",
     token: "",
     isFinished: false,
-    userAvatar: ''
+    userAvatar: "",
   })
 
   const times = []
@@ -51,7 +51,6 @@ function CreateLottery(props) {
           return
         }
         if (res) {
-          console.log("res", res)
           const user = JSON.parse(res)
           const temLottery = Object.assign(lotteryInfo)
           temLottery.userAvatar = user.avatar
@@ -89,8 +88,23 @@ function CreateLottery(props) {
       })
       return
     }
+    if (
+      lotteryInfo.title.length === 0 ||
+      lotteryInfo.prize.length === 0 ||
+      lotteryInfo.desc.length === 0 ||
+      lotteryInfo.contact.length === 0
+    ) {
+      toast("每一項都是必填的哦！", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+      })
+      return
+    }
     Api.createLottery(lotteryInfo).then(res => {
-      if (res.data.message === 'Unauthorized') {
+      if (res.data.message === "Unauthorized") {
         toast("需要 LogIn !", {
           position: "top-center",
           autoClose: 3000,
@@ -99,12 +113,16 @@ function CreateLottery(props) {
           pauseOnHover: true,
         })
         setTimeout(() => {
-          navigate('/login/')
+          navigate("/login/")
         }, 2000)
         return
       }
-      if (res.data.status === 'ok') {
-        // navigate('/')
+      if(res.data.message === "BadRequestException"){
+        handleCreateLottery()
+        return
+      }
+      if (res.data.status === "ok") {
+        navigate("/")
       }
     })
   }
@@ -182,6 +200,7 @@ function CreateLottery(props) {
               {t("LOTTERY_TIMER")}
             </InputLabel>
             <Select
+              disabled
               label={t("LOTTERY_TIMER")}
               placeholder={t("LOTTERY_TIMER_TIPS")}
               variant="outlined"
@@ -197,36 +216,44 @@ function CreateLottery(props) {
             <FormHelperText>{t("LOTTERY_TIMER_TIPS")}</FormHelperText>
           </FormControl>
 
-          <TextField
-            id="outlined-basic"
-            label={t("LOTTERY_DESCRIPTION")}
-            placeholder={t("LOTTERY_DESCRIPTION_TIPS")}
-            multiline
-            rows={2}
-            onChange={e => {
-              updateLotteryInfo(e.target.value, "desc")
-            }}
-            value={lotteryInfo.desc}
-            variant="outlined"
-          />
-          <TextField
-            id="outlined-basic"
-            label={t("LOTTERY_CONTACT")}
-            placeholder={t("LOTTERY_CONTACT_TIPS")}
-            multiline
-            rows={1}
-            onChange={e => {
-              updateLotteryInfo(e.target.value, "contact")
-            }}
-            value={lotteryInfo.contact}
-            variant="outlined"
-          />
+          <FormControl>
+            <TextField
+              id="outlined-basic"
+              label={t("LOTTERY_DESCRIPTION")}
+              multiline
+              rows={2}
+              onChange={e => {
+                updateLotteryInfo(e.target.value, "desc")
+              }}
+              value={lotteryInfo.desc}
+              variant="outlined"
+            />
+            <FormHelperText>{t("LOTTERY_DESCRIPTION_TIPS")}</FormHelperText>
+          </FormControl>
+
+          <FormControl>
+            <TextField
+              id="outlined-basic"
+              label={t("LOTTERY_CONTACT")}
+              multiline
+              rows={1}
+              onChange={e => {
+                updateLotteryInfo(e.target.value, "contact")
+              }}
+              value={lotteryInfo.contact}
+              variant="outlined"
+            />
+            <FormHelperText>{t("LOTTERY_CONTACT_TIPS")}</FormHelperText>
+          </FormControl>
           <div className="start-lottery">
             <Button onClick={handleCreateLottery} variant="outlined">
               {t(`START_LOTTERY`)}
             </Button>
           </div>
-          <FormControl className="lottery-tips"></FormControl>
+          <FormControl className="lottery-tips">
+                        <FormHelperText>重要說明：給一篇文章按讚就是參與了抽獎，抽獎機會隨機進行排序。發起人可以選定第一名或者多名獲得獎品，規則由發起人自己定義。</FormHelperText>
+                        <FormHelperText>如果問題，請聯繫 guanyun。</FormHelperText>
+          </FormControl>
         </div>
       </div>
     </Layout>

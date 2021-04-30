@@ -1,6 +1,7 @@
 @media (max-width: 768px) {
   .lottery-list {
     width: 100vw;
+    padding-bottom: 52px;
     // height: 100vh;
     .infinite-scroll-component {
       padding-top: 20px;
@@ -11,7 +12,7 @@
     }
     .lottery {
       width: 90vw;
-      height: 256px;
+      height: 265px;
       border-radius: 10px;
       background-color: #fff;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
@@ -71,17 +72,22 @@
       }
       .prize {
         background: #28646e;
-        padding: 10px;
+        padding: 5px;
         border-radius: 10px;
         margin-top: 15px;
         font-family: Inter;
         font-style: normal;
         font-weight: normal;
-        font-size: 18px;
-        line-height: 22px;
+        font-size: 12px;
+        line-height: 20px;
         /* identical to box height */
         color: #fff;
         letter-spacing: 0.75px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        height: 45px;
       }
       .likerList {
         margin-top: 15px;
