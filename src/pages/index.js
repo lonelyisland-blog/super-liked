@@ -11,6 +11,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import LotteryList from "../container/lottery/lotteryList.jsx"
 import "../styles/pages/index.scss"
+import { navigate } from "gatsby"
 
 //imgs
 import Create from "../assets/imgs/lottery/create.png"
@@ -47,8 +48,9 @@ function IndexPage(props) {
           pauseOnHover: true,
         })
         setTimeout(() => {
-          navigator('/login')
+          navigate('/login')
         }, 1000)
+        return
       }
       if (res) {
         Api.getTokenInfo({ token: res })
@@ -65,8 +67,9 @@ function IndexPage(props) {
               pauseOnHover: true,
             })
             setTimeout(() => {
-              navigator('/login')
+              navigate('/login')
             }, 1000)
+            return
           })
       }
     })

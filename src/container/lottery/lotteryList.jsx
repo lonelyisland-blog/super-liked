@@ -87,13 +87,13 @@ function LotteryList(props) {
             goDetail(item.token)
           }}>
             <div className="title">
+              <img className="host-avatar" src={item.userAvatar} />
               <div className="lottery-title">{item.title}</div>
               <div className="host-name">by {item.user}</div>
-              <img className="host-avatar" src={item.userAvatar} />
             </div>
             <FormControl></FormControl>
             <FormControl className="prize">
-              <div>{item.desc}</div>
+              {item.desc}
             </FormControl>
             <FormControl>
               <div className="likerList">

@@ -36,6 +36,8 @@
       }
     }
     .lottery-results {
+      max-height: 345px;
+      overflow-y: scroll;
       .result-item {
         display: flex;
         flex-direction: row;
